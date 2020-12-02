@@ -8,7 +8,6 @@ def validate_password(password_dict):
     return password_dict["max"] >= count >= password_dict["min"]
 
 def validate_password_v2(password_dict):
-    count = 0
     password = password_dict["password"]
     min_index = password_dict["min"]
     max_index = password_dict["max"]
