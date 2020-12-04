@@ -32,6 +32,7 @@ if __name__ == "__main__":
             for part in parts:
                 part = part.split(':')
                 passport[part[0].strip()] = part[1].replace('\n', '')
+        passports.append(passport)
         
     
     required_fields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
@@ -48,4 +49,3 @@ if __name__ == "__main__":
 
     print(f'valid_passports 1: {count_valid_passports(passports, required_fields)}')
     print(f'valid_passports 2: {count_valid_passports(passports, required_fields, validations)}')
-
