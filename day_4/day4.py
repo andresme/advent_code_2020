@@ -1,7 +1,6 @@
 import re
 
 hcl_regex = re.compile(r'#[0-9a-f]{6}')
-hgt_regex = re.compile(r'(\d+)(cm|in)')
 ecl_regex = re.compile(r'amb|blu|brn|gry|grn|hzl|oth')
 pid_regex = re.compile(r'^[0-9]{9}$')
 
@@ -41,7 +40,7 @@ if __name__ == "__main__":
         'iyr': lambda x: 2010 <= int(x) <= 2020,
         'eyr': lambda x: 2020 <= int(x) <= 2030,
         'hgt': lambda x: (150 <= int(x[:-2]) <= 193 if x[-2:] == 'cm' 
-                          else 59 <= int(x[:-2]) <= 76 if x[-2:] == 'in' else False),
+                            else 59 <= int(x[:-2]) <= 76 if x[-2:] == 'in' else False),
         'hcl': lambda x: bool(re.match(hcl_regex, x)),
         'ecl': lambda x: bool(re.match(ecl_regex, x)),
         'pid': lambda x: bool(re.match(pid_regex, x))
