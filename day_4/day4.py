@@ -1,8 +1,6 @@
 import re
 
 hcl_regex = re.compile(r'#[0-9a-f]{6}')
-ecl_regex = re.compile(r'amb|blu|brn|gry|grn|hzl|oth')
-pid_regex = re.compile(r'^[0-9]{9}$')
 
 def count_valid_passports(passports, required_fields, validations=None):
     valid_passports = 0
@@ -43,9 +41,10 @@ if __name__ == "__main__":
         'hgt': lambda x: (150 <= int(x[:-2]) <= 193 if x[-2:] == 'cm' 
                             else 59 <= int(x[:-2]) <= 76 if x[-2:] == 'in' else False),
         'hcl': lambda x: bool(re.match(hcl_regex, x)),
-        'ecl': lambda x: bool(re.match(ecl_regex, x)),
-        'pid': lambda x: bool(re.match(pid_regex, x))
+        'ecl': lambda x: x in {'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'},
+        'pid': lambda x: x.isnumeric() and len(x) == 9
     }
 
     print(f'valid_passports 1: {count_valid_passports(passports, required_fields)}')
     print(f'valid_passports 2: {count_valid_passports(passports, required_fields, validations)}')
+
