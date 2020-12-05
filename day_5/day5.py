@@ -1,13 +1,12 @@
 def get_row_column(ticket):
     row = [0, 127]
     column = [0, 7]
-    for letter in ticket[:-3]:
+    for letter in ticket:
         if letter == 'F':
             row[1] = (row[0] + row[1]) // 2
         elif letter == 'B':
             row[0] = (row[0] + row[1] + 1) // 2
-    for letter in ticket[-3:]:
-        if letter == 'L':
+        elif letter == 'L':
             column[1] = (column[0] + column[1]) // 2
         elif letter == 'R':
             column[0] = (column[0] + column[1] + 1) // 2
@@ -27,4 +26,3 @@ if __name__ == "__main__":
         for seat in set(ticket_ids):
             if seat + 2 in ticket_ids and not seat + 1 in ticket_ids:
                 print(seat+1)
-            
