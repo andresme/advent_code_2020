@@ -20,7 +20,7 @@ def get_group_answers(content, append_operation):
 
 if __name__ == "__main__":
     answers = []
-    with open('input.txt', 'r') as inputFile:
+    with open('day_6/input.txt', 'r') as inputFile:
         content = inputFile.read()
     
     answers = get_group_answers(content.split('\n'), 'union')
