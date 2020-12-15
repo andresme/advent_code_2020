@@ -8,18 +8,18 @@ def get_earliest_from_timestamp(arrival, buses):
     print(nearest[0] * nearest[1])
 
 if __name__ == "__main__":
-    with open('input.txt', 'r') as input_file:
+    with open('day_13/input.txt', 'r') as input_file:
         arrival, buses = input_file.read().split('\n')
     
     get_earliest_from_timestamp(arrival, buses)
     
-    buses = [(i, bus) for i, bus in enumerate(buses.split(",")) if bus != "x"]
+    buses = [(i, int(bus)) for i, bus in enumerate(buses.split(",")) if bus != "x"]
 
-    jump = buses[0][0] 
+    jump = buses[0][1] 
     i = jump
-    for bus in buses[1:]:
-        while (i+bus[1])%bus[0] != 0:
+    for idx, bus in buses[1:]:
+        while (i+idx) % bus != 0:
             i += jump
-        jump *= bus[0]
+        jump *= bus
 
     print(i)
