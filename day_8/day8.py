@@ -31,6 +31,8 @@ if __name__ == "__main__":
             continue
 
         accum, pointer = run_program(instructions_temp)
-        if pointer == len(instructions):
+        if pointer == len(instructions_temp):
+            print(i)
             print(accum)
+            break
    
