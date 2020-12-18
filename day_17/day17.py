@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 def calculate_next_iteration(initial_state, size, current_iter):
     cells_to_check = set(initial_state)
     processed_cells = set()
@@ -19,7 +16,7 @@ def calculate_next_iteration(initial_state, size, current_iter):
             (x,y,z,w) not in processed_cells):
                 cells_to_check.add((x,y,z,w))
 
-        active_neighbours = sum([1 for neighbour in neighbours if neighbour in initial_state])
+        active_neighbours = len(neighbours.intersection(initial_state))
         if (cell in initial_state and 1 < active_neighbours < 4 or
         cell not in initial_state and active_neighbours == 3):
             new_state.add(cell)
@@ -36,7 +33,7 @@ def generate_neighbours(x,y,z,w):
     return neighbours
 
 if __name__ == "__main__":
-    with open('input.txt') as input_file:
+    with open('day_17/input.txt') as input_file:
         initial_state = input_file.read().split('\n')
     
     active_cells = set()
